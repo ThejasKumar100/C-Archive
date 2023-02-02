@@ -1,0 +1,78 @@
+#include <iostream>
+#include <cmath>
+#include <fstream>
+
+#include "BaseSorter.h"
+
+using namespace std;
+
+//Quick Sort Version 5
+//Creation type: RAW
+//Author: Thejaswin Kumaran
+
+class QuickSorter : public BaseSorter {
+    
+    public:
+    
+    //Constructor
+    //Status: Clean
+    QuickSorter (ifstream& ifs, int size) : BaseSorter (ifs, size)
+    {
+        
+    }
+    
+    //Status: Untested
+    void sort()
+    {
+        quickSort(buf[0], buf[numEntries - 1]);
+    }
+    
+    protected:
+    
+    void quickSort(int low, int high)
+    {
+        
+    }
+    
+    //Status: Untested
+    int pointFinder(int low, int high)
+    {
+        int num1 = low;
+        int num2 = 0;
+        int num3 = high;
+        
+        int x = 0;
+        if (((high - low) % 2) == 1)
+        {
+            num2 = ((high - low) - 1) / 2;
+        }
+        else
+        {
+            num2 = (high - low) / 2;
+        }
+        
+        
+        
+        if (((buf[num2] <= buf[num1]) && (buf[num1] <= buf[num3]))  ||  (buf[num3] <= buf[num1]) && (buf[num1] <= buf[num2]))
+        {
+            num3 = num1;
+        }
+        else if ((buf[num1] <= buf[num2]) && (buf[num2] <= buf[num3])   ||  (buf[num3] <= buf[num2]) && (buf[num2] <= buf[num1]))
+        {
+            num3 = num2;
+        }
+        
+        
+        return num3;
+        
+    }
+    
+    //Status: Untested
+    static void intSwap(int sub1, int sub2)
+    {
+        int sub3 = sub1;
+        sub1 = sub2;
+        sub2 = sub3;
+    }
+    
+};
